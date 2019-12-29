@@ -114,41 +114,15 @@ end
 
 Prime_Swipe_A = Prime_Swipe:new{
 	Daze = true,
-	UpgradeDescription = "Affected enemies have their attacks cancelled."
+	UpgradeDescription = "Affected enemies have their attacks cancelled.",
 }
 
 Prime_Swipe_B = Prime_Swipe:new{
 	Damage = 3,
-	UpgradeDescription = "Increases damage to 3."
+	UpgradeDescription = "Increases damage to 3.",
 }
 
 Prime_Swipe_AB = Prime_Swipe:new{
 	Daze = true,
 	Damage = 3,
 }
---[[
-Prime_Swipe_Tip = Prime_Swipe:new{
-	TipImage = {
-		Unit = Point(2,2),
-		CustomPawn = "SawMech",
-		Target = Point(3,3),
-		Enemy = Point(3,3),
-		Enemy2 = Point(2,3),
-		Enemy3 = Point (3,2),
-		Length = 4,
-	},
-}
-]]
---[[
-function Prime_Swipe_Tip:GetSkillEffect(p1,p2)
-	local damage = SpaceDamage(0)
-	damage.bHide = true
-	damage.sScript = "Board:GetPawn(Point(2,3)):FireWeapon(Point(2,2),1)"
-	ret:AddDamage(damage)
-	damage = SpaceDamage(0)
-	damage.bHide = true
-	damage.sScript = "Board:GetPawn(Point(3,2)):FireWeapon(Point(2,2),1)"
-	ret:AddDamage(damage)
-	return ret
-end
-]]

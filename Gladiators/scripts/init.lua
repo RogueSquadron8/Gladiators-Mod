@@ -1,5 +1,5 @@
 local description = "A squad of mechs that specialize in melee engagements."
-local modApiExt
+local G_modApiExt
 
 local Mechs = {
 	{
@@ -35,18 +35,18 @@ local Mechs = {
   		Path = "img/units/player", 
   		ResourcePath = "units/player",
 		Default =           { PosX = -16, PosY = -4 },
-        Animated =          { PosX = -18, PosY = -9, NumFrames = 10 },
-        Submerged =         { PosX = -24, PosY = -1 },
-        Broken =            { PosX = -20, PosY = -14 },
-        SubmergedBroken =   { PosX = -18, PosY = 0 },
+        Animated =          { PosX = -18, PosY = -4, NumFrames = 6 },
+        Submerged =         { PosX = -18, PosY = 8 },
+        Broken =            { PosX = -18, PosY = -5 },
+        SubmergedBroken =   { PosX = -18, PosY = 8 },
 		Icon =		    	{ PosX = -16, PosY = -4 },
 	},
 }
 
 local function init(self)
 	local extDir = self.scriptPath .."modApiExt/"
-	modApiExt = require(extDir .."modApiExt")
-	modApiExt:init(extDir)
+	G_modApiExt = require(extDir .."modApiExt")
+	G_modApiExt:init(extDir)
 	
 	modApi:appendAsset("img/icons/gladiators_icon.png",self.resourcePath.."img/icons/gladiators_icon.png")
 	modApi:appendAsset("img/icons/squad_icon.png",self.resourcePath.."img/icons/squad_icon.png")
@@ -131,7 +131,7 @@ local function init(self)
 end
 
 local function load(self, options, version)
-	modApiExt:load(self, options, version)
+	G_modApiExt:load(self, options, version)
 	
 	modApi:addSquadTrue({"Gladiators", "SpearMech", "SawMech", "RamMech"}, "Gladiators", description, self.resourcePath .. "img/icons/squad_icon.png")
 end
@@ -139,7 +139,7 @@ end
 return {
 	id = "Gladiators",
 	name = "Gladiators",
-	version = "1.0",
+	version = "1.1",
 	requirements = {},
 	icon = "img/icons/gladiators_icon.png",
 	init = init,

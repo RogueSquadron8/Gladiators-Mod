@@ -31,7 +31,7 @@ function Prime_Ram:GetSkillEffect(p1,p2)
 	local dir = GetDirection(p2 - p1)
 	
 	if self.FullPush then
-		ret:AddDamage(SpaceDamage(p2, damage))
+		ret:AddMelee(p1, SpaceDamage(p2, damage))
 		local chargeEnd = p2 + DIR_VECTORS[dir]
 		while not Board:IsBlocked(chargeEnd, PATH_PROJECTILE) do
 			chargeEnd = chargeEnd + DIR_VECTORS[dir]
@@ -40,7 +40,7 @@ function Prime_Ram:GetSkillEffect(p1,p2)
 		ret:AddCharge(Board:GetSimplePath(p2, chargeEnd), NO_DELAY)
 	else
 		local dam = SpaceDamage(p2, damage, dir)
-		ret:AddDamage(dam)
+		ret:AddMelee(p1, dam)
 	end
 	
 	if self.SideSmoke then
