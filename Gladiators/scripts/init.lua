@@ -1,5 +1,5 @@
 local description = "A squad of mechs that specialize in melee engagements."
-local G_modApiExt
+local RogueSquadron_G_modApiExt
 
 local Mechs = {
 	{
@@ -45,8 +45,8 @@ local Mechs = {
 
 local function init(self)
 	local extDir = self.scriptPath .."modApiExt/"
-	G_modApiExt = require(extDir .."modApiExt")
-	G_modApiExt:init(extDir)
+	RogueSquadron_G_modApiExt = require(extDir .."modApiExt")
+	RogueSquadron_G_modApiExt:init(extDir)
 	
 	modApi:appendAsset("img/icons/gladiators_icon.png",self.resourcePath.."img/icons/gladiators_icon.png")
 	modApi:appendAsset("img/icons/squad_icon.png",self.resourcePath.."img/icons/squad_icon.png")
@@ -131,7 +131,7 @@ local function init(self)
 end
 
 local function load(self, options, version)
-	G_modApiExt:load(self, options, version)
+	RogueSquadron_G_modApiExt:load(self, options, version)
 	
 	modApi:addSquadTrue({"Gladiators", "SpearMech", "SawMech", "RamMech"}, "Gladiators", description, self.resourcePath .. "img/icons/squad_icon.png")
 end
@@ -139,8 +139,8 @@ end
 return {
 	id = "Gladiators",
 	name = "Gladiators",
-	version = "1.1",
-	requirements = {},
+	version = "1.1.1",
+	requirements = {"kf_ModUtils"},
 	icon = "img/icons/gladiators_icon.png",
 	init = init,
 	load = load,
